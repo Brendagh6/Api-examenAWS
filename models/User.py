@@ -8,7 +8,7 @@ class Usuarios(db.Model):
     nombre = db.Column(db.String(100), nullable=False)
     correo = db.Column(db.String(150), unique=True, nullable=False)
     passw = db.Column(db.String(200), nullable=False)
-   
+
     
     def __init__(self, nombre,correo, passw):
         self.nombre = nombre
@@ -26,6 +26,5 @@ class Usuarios(db.Model):
             "id_usuario": self.id_usuario,
             "nombre": self.nombre,
             "correo": self.correo,
-            "passw": self.passw,
         }
     

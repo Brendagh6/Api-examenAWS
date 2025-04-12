@@ -1,6 +1,8 @@
 from models.User import Usuarios
 from flask import jsonify
 from config import db
+from werkzeug.security import generate_password_hash
+from flask import jsonify
 from flask_jwt_extended import create_access_token
 
 def get_all_users():
@@ -30,7 +32,7 @@ def update_user(id_usuario, nombre, correo,passw):
 
         user.nombre = nombre
         user.correo = correo
-        user.passw = passw
+        user.passw = generate_password_hash(passw)
         db.session.commit()
 
         return user.to_dict()
