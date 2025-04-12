@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required  # Importar jwt_required
 from controllers.userController import (
     get_all_users,
     create_user,
@@ -13,6 +14,7 @@ user_bp = Blueprint("usuarios", __name__)
 
 # Obtener todos los usuarios
 @user_bp.route("/", methods=["GET"])
+@jwt_required()
 def index():
     """
     Obtener todos los usuarios
